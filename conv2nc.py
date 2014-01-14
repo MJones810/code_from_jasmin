@@ -83,11 +83,12 @@ def createnetCDF(ppfile):
 
 
 if __name__ == '__main__':
-	ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
-	ppfile = 'xjanpa.pj19910301'
-	timelevelmin = 6
-	timelevelmax = 10 
-        createnetCDF(ppfile)
-	pp2nc(ppdir,ppfile,timelevelmin,timelevelmax)
+    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
+    ppfile = 'xjanpa.pj19910301'
+    createnetCDF(ppfile)
+    for t in xrange(0,10,3):	
+        timelevelmin = t
+        timelevelmax = t+1 
+        pp2nc(ppdir,ppfile,timelevelmin,timelevelmax)
 
 
