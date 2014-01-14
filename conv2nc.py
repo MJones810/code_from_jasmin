@@ -7,7 +7,7 @@ def pp2nc(ppdir,ppfile,t,t1):
 	"""
 	f = cdms2.open(ppdir+ppfile)
 	vars = f.getVariables()
-	u_1 = vars[4]
+	u_1 = vars[9]
 	print 'Variable being saved', u_1
 	ncfile = ppfile+"."+str(t)+"to"+str(t1)+".u"+".nc"
 	f2 = cdms2.open(ncfile,'w')
@@ -22,5 +22,5 @@ if __name__ == '__main__':
 	ppdir = "/group_workspaces/jasmin/hiresgw/xjanp/pp/"
 	ppfile = "xjanpa.pj19910301.pp"
 	timelevelmin = 0
-	timelevelmax = 10 
+	timelevelmax = 3 
 	pp2nc(ppdir,ppfile,timelevelmin,timelevelmax)
