@@ -3,20 +3,22 @@ import cdms2
 import time
 from netCDF4 import Dataset
 
-def pp2nc(ppdir,ppfile,t,t1):
+def pp2nc(t):
     ''' Converts pp file for u_1 variable at a specific time level to 
         an nc file.
     '''
+    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
+    ppfile = 'xjanpa.pj19910301'
     f = cdms2.open(ppdir+ppfile+'.pp')
     vars = f.getVariables()
     u = vars[9]
-    print 'Variable being saved', u
-    ncfile = ppfile+'.u.nc'
+    #print 'Variable being saved', u
+    ncfile = ppfile+'.serial.u.nc'
     f2 = Dataset(ncfile,'a')
     appendu = f2.variables['u']
-    print 'Writing ', ncfile
-    appendu[t:t1] = u[t:t1,:,:,:]
-    print appendu
+    #print 'Writing ', ncfile
+    appendu[t:t+1] = u[t:t+1,:,:,:]
+    #print appendu
     f.close()
     f2.close()
 	
@@ -82,13 +84,14 @@ def createnetCDF(ppfile):
     f.close()
 
 
+
 if __name__ == '__main__':
     ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
     ppfile = 'xjanpa.pj19910301'
-    createnetCDF(ppfile)
-    for t in xrange(0,10,3):	
+    createnetCDF(ppfile+'.serial')
+    for t in xrange(0,10):	
         timelevelmin = t
         timelevelmax = t+1 
-        pp2nc(ppdir,ppfile,timelevelmin,timelevelmax)
+        pp2nc(timelevelmin)
 
 
