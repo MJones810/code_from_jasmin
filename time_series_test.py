@@ -18,14 +18,15 @@ lon2 = f2.variables['longitude']
 height2 = f2.variables['z_hybrid_height']
 time2 = f2.variables['time']
 
-
+h = height[:]
+t = time[:]
 
 plt.figure()
 plt.subplot(2,1,1)
-plt.pcolor(u[:,:,345,708])
+plt.contourf(lat[:],h,u[0,:,:,708])
 plt.colorbar()
 plt.subplot(2,1,2)
-plt.pcolor(u2[:,:,345,708])
+plt.contourf(lat[:],h,u2[0,:,:,708])
 plt.colorbar()
 plt.show()
 

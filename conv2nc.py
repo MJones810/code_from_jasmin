@@ -1,27 +1,33 @@
 #!/usr/bin/env python2.7
 import cdms2
-import time
-from netCDF4 import Dataset
+from netCDF4 import Dataset 
+from sys import argv
 
-def pp2nc(t):
-    ''' Converts pp file for u_1 variable at a specific time level to 
-        an nc file.
+def hourspassed(ppfile,t):
+    ''' Function to work out hours passed since start o=f the model.
+
+    Asumes 360 day calendar.
     '''
-    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
-    ppfile = 'xjanpa.pj19910301'
-    f = cdms2.open(ppdir+ppfile+'.pp')
-    vars = f.getVariables()
-    u = vars[9]
-    #print 'Variable being saved', u
-    ncfile = ppfile+'.serial.u.nc'
-    f2 = Dataset(ncfile,'a')
-    appendu = f2.variables['u']
-    #print 'Writing ', ncfile
-    appendu[t:t+1] = u[t:t+1,:,:,:]
-    #print appendu
-    f.close()
-    f2.close()
-	
+    
+    startyear = 1991
+    startmonth = 03
+    startday = 01
+    year = int(ppfile[-8:-4])
+    month = int(ppfile[-4:-2])
+    day = int(ppfile[-2:])
+
+    yearspass = year-startyear     
+    if month>=03: monthspass = month-startmonth
+    elif month==01: 
+        monthspass = 10
+    elif month==02: 
+        monthspass = 11
+    dayspass = day-startday
+    
+    hourspass = ((yearspass*360+monthspass*30)+dayspass)*24 + t
+
+    return hourspass
+
 def createnetCDF(ppfile):
     ''' Creates the netCDF file to then be opened in pp2nc. 
     '''
@@ -50,7 +56,7 @@ def createnetCDF(ppfile):
                                    'longitude',))
     
     # Add in attributes
-    times.units = 'days since 1970-01-01 00:00:00'
+    times.units = 'hours since 1991-03-01 00:00:00'
     times.standard_name = 'time'
     times.calendar = '360_day'
     times.axis = 'T'
@@ -90,18 +96,49 @@ def createnetCDF(ppfile):
     latitudes[:] = lat[:]
     longitudes[:] = lon[:]
     z_hybrid_heights[:] = height[:]
+
+    
+
 	
     f.close()
 
+def pp2nc(t):
+    ''' Converts pp file for u_1 variable at a specific time level to 
+        an nc file.
+    '''
 
+    print '\nWrite started for ',t
+    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
+    ppfile = argv[1:]
+    f = cdms2.open(ppdir+ppfile[0]+'.pp')
+    vars = f.getVariables()   
+    u = vars[9]
+
+    print 'Variables being saved', u
+
+    ncfile = ppfile[0]+'.u.nc'
+    f2 = Dataset(ncfile,'a')
+    appendu = f2.variables['u']
+    appendtime = f2.variables['time']
+
+    print 'Writing ', ncfile
+    appendu[t:t+1] = u[t:t+1,:,:,:]
+    appendtime[t:t+1] = hourspassed(ppfile[0],t)
+
+    f.close()
+    f2.close()
+    print 'Write done for t = ',t,'\n'
+
+
+
+
+def main():    
+    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
+    # Get filename from shell argument
+    ppfile = argv[1:]
+    createnetCDF(ppfile[0])
+    for t in xrange(0,3):	
+        pp2nc(t)
 
 if __name__ == '__main__':
-    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
-    ppfile = 'xjanpa.pj19910301'
-    createnetCDF(ppfile+'.serial')
-    for t in xrange(0,10):	
-        timelevelmin = t
-        timelevelmax = t+1 
-        pp2nc(timelevelmin)
-
-
+    main()
