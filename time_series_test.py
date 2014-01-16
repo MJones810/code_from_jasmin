@@ -5,18 +5,29 @@ import matplotlib.pyplot as plt
 from netCDF4 import Dataset
 
 f = Dataset('xjanpa.pj19910301.u.nc','r')
+f2 = Dataset('xjanpa.pj19910301.serial.u.nc','r')
 
 u = f.variables['u']
+lat = f.variables['latitude']
+lon = f.variables['longitude']
+height = f.variables['z_hybrid_height']
+time = f.variables['time']
+u2 = f2.variables['u']
+lat2 = f2.variables['latitude']
+lon2 = f2.variables['longitude']
+height2 = f2.variables['z_hybrid_height']
+time2 = f2.variables['time']
 
-print 'u = ',u.shape
 
-# take a small slice for speed
-u_slice = u[:,::10,::20,::20]
-print 'u_slice = ', u_slice.shape
-# Calculate zonal mean
-u_zm = np.mean(u_slice,3)
 
-print 'u_zum = ', u_zm.shape
-
-plt.contour(u_zm[:,:,18])
+plt.figure()
+plt.subplot(2,1,1)
+plt.pcolor(u[:,:,345,708])
+plt.colorbar()
+plt.subplot(2,1,2)
+plt.pcolor(u2[:,:,345,708])
+plt.colorbar()
 plt.show()
+
+f.close()
+f2.close()

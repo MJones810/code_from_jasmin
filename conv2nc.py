@@ -80,7 +80,17 @@ def createnetCDF(ppfile):
     u.missing_value = -1.073742e+09
     
     # need to add in a bit that saves the values of time, lat and lon
+    ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
+    f2 = Dataset('/home/users/mjones07/science/xjanpa.19920111.uutest1.nc')
+    
+    lat = f2.variables['latitude0']
+    lon = f2.variables['longitude0']
+    height = f2.variables['z0_hybrid_height']
 
+    latitudes[:] = lat[:]
+    longitudes[:] = lon[:]
+    z_hybrid_heights[:] = height[:]
+	
     f.close()
 
 
