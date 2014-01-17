@@ -31,7 +31,8 @@ def hourspassed(ppfile,t):
 def createnetCDF(ppfile):
     ''' Creates the netCDF file to then be opened in pp2nc. 
     '''
-    ncfile = ppfile+'.u.nc'
+    print '\n\n',ppfile, '\n\n\n'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+ppfile+'.u.nc'
     f = Dataset(ncfile,'w')
 
     # Create dimensions
@@ -102,28 +103,27 @@ def createnetCDF(ppfile):
 	
     f.close()
 
-def pp2nc(t):
+def pp2nc(t,ppfile):
     ''' Converts pp file for u_1 variable at a specific time level to 
         an nc file.
     '''
 
     print '\nWrite started for ',t
     ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
-    ppfile = argv[1:]
-    f = cdms2.open(ppdir+ppfile[0]+'.pp')
+    f = cdms2.open(ppdir+ppfile+'.pp')
     vars = f.getVariables()   
     u = vars[9]
 
     print 'Variables being saved', u
 
-    ncfile = ppfile[0]+'.u.nc'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+ppfile+'.u.nc'
     f2 = Dataset(ncfile,'a')
     appendu = f2.variables['u']
     appendtime = f2.variables['time']
 
     print 'Writing ', ncfile
     appendu[t:t+1] = u[t:t+1,:,:,:]
-    appendtime[t:t+1] = hourspassed(ppfile[0],t)
+    appendtime[t:t+1] = hourspassed(ppfile,t)
 
     f.close()
     f2.close()
@@ -131,14 +131,17 @@ def pp2nc(t):
 
 
 
-
 def main():    
     ppdir = '/group_workspaces/jasmin/hiresgw/xjanp/pp/'
     # Get filename from shell argument
-    ppfile = argv[1:]
-    createnetCDF(ppfile[0])
-    for t in xrange(0,3):	
-        pp2nc(t)
+    ppfiletemp = argv[1:]
+    ppfiletemp2 = ppfiletemp[0]
+    ppfile = ppfiletemp2[42:-3]
+    print ppfile
+    createnetCDF(ppfile)
+    for t in xrange(0,240):
+        print t
+        pp2nc(t,ppfile)
 
 if __name__ == '__main__':
     main()
