@@ -8,10 +8,11 @@ def create_nc(filein):
     ''' Creates the NetCDF file to save the final averages
         in.
     '''
-    
+    print '\n\n create_nc\n'
+    print filein
     filedir = filein[:-22]+'monthly_means/'
-    filename = filein[-22:-7]+'.mean.u.nc'
-
+    filename = filein[-22:-16]+'.monthlymean.u.nc'
+    print filedir+filename
     f = Dataset(filedir+filename,'w')
 
     # Create dimensions
@@ -36,7 +37,7 @@ def create_nc(filein):
                                    'longitude',))
     
     # Add in attributes
-    times.units = 'hours since 1991-03-01 00:00:00'
+    times.units = 'months since 1991-03-01 00:00:00'
     times.standard_name = 'time'
     times.calendar = '360_day'
     times.axis = 'T'
@@ -68,9 +69,9 @@ def create_nc(filein):
     # need to add in a bit that saves the values of time, lat and lon
     f2 = Dataset(filein)
     
-    lat = f2.variables['latitude0']
-    lon = f2.variables['longitude0']
-    height = f2.variables['z0_hybrid_height']
+    lat = f2.variables['latitude']
+    lon = f2.variables['longitude']
+    height = f2.variables['z_hybrid_height']
 
     latitudes[:] = lat[:]
     longitudes[:] = lon[:]
@@ -83,11 +84,17 @@ def create_temp_nc(filename):
     ''' Creates a temporary NetCDF file to store u between
         tasks.
     '''
-
-    tempdir = filename[:-22]+'monthly_means/temp_files/'
-    tempfile = filename[-22:-5]+'.temp.nc'
-
-    f = Dataset(tempdir+tempfile,'w')
+    # If long filename assume from 'average_files'
+    if filename[-3:] == '.nc' :
+        tempdir = filename[:-22]+'monthly_means/temp_files/'
+        tempfile = filename[-22:-5]+'.temp.nc'
+    
+    else : # Else from monthly average
+        tempdir = filename[:-15]+'monthly_means/temp_files/'
+        tempfile = filename[-15:]+'.temp.nc'
+    print filename
+    print tempdir+tempfile
+    f = Dataset(tempdir+tempfile,'w')    
     
     # Create dimensions
     z_hybrid_height = f.createDimension('z_hybrid_height',180)
@@ -109,21 +116,24 @@ def file_avg(mean,filename):
     timelength = len(time)
     u = f.variables['u']
     
-    for t in xrange(12):
-        print t, mean.shape, mean[10,10,10]
-        mean = (mean+u[t,:,:,:])/2
+    #for t in xrange(1):
+    #    print t, mean.shape, mean[10,10,10]
+    #    mean = (mean+u[t,:,:,:])/2
     
     
     f.close()
     return mean
 
 @jug.TaskGenerator
-def final_average(a):
+def final_average(n):
     ''' Saves all the monthly averages into a single NetCDF
         file.
 
         Creates a file to save into.
     '''
+    filename = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910301.u.nc'
+    print '\n file sent  ', filename
+    create_nc(filename)
 
 @jug.TaskGenerator
 def average_to_month(filein):
@@ -131,7 +141,10 @@ def average_to_month(filein):
         
         Creates a new temporary file per month.
     '''
+    
     month = filein[:-7]
+    print 'create month', month
+    create_temp_nc(month)
 
 @jug.TaskGenerator
 def average_files(filename):
@@ -139,6 +152,7 @@ def average_files(filename):
     
         Creates a new temporary file per originl file.
     '''
+    
     f = Dataset(filename,'r')
     z = f.variables['z_hybrid_height']
     lat = f.variables['latitude']
@@ -153,7 +167,6 @@ def average_files(filename):
     create_temp_nc(filename)
     f = Dataset(tempdir+tempfile,'a')
     u = f.variables['u']
-    print 'u ',u.shape,'    mean ',mean.shape 
     u[:] = mean[:]
     f.close()
 
@@ -165,12 +178,12 @@ months = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj??????01.u.nc')
 
 # First reduce the number of timesteps on each file by
 # averaging them.
-map(average_files,files[0:3]) #36 tasks
+map(average_files,files) #36 tasks
 jug.barrier()
 # Next reduce each month to one file by avergaing them
-map(average_to_month,months[0]) #12 tasks
+map(average_to_month,months) #12 tasks
 jug.barrier()
 # Finally reduce all months to a single file containg 
 # all the averages
-a = ['balls']
-map(final_average,a) #1 task
+n = [1]
+map(final_average,n) #1 task

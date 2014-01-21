@@ -2,16 +2,11 @@
 
 jugfile=/home/users/mjones07/science/jugrun.sh
 errfile=/home/users/mjones07/science/bsubErr
-jugsave=xjanpa.pj19910301.u.nc
 
-rm -rf conv2ncJug.jugdata/
-rm -f $jugsave
+rm -rf par_mon_mean.jugdata/
 rm -f $errfile
 
-python2.7 createNC.py
-chmod 757 $jugsave
-
-for i in 1 2 3 4 ; do
+for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
     
     bsub -q lotus -o $errfile $jugfile 
 
