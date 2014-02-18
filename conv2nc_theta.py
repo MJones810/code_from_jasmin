@@ -33,11 +33,11 @@ def hourspassed(fieldfile,t):
 def createnetCDF(fieldfile):
     ''' Creates the netCDF file to then be opened in field2nc. 
     '''
-    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.v.nc'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.theta.nc'
     f = Dataset(ncfile,'w')
 
     zres = 180
-    latres = 769
+    latres = 768
     lonres = 1024
     # Create dimensions
     time = f.createDimension('time',None)
@@ -57,7 +57,7 @@ def createnetCDF(fieldfile):
     longitudes = f.createVariable('longitude','f4',('longitude',),zlib=True)
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',),zlib=True)
-    v = f.createVariable('v','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable('theta','f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
 
     # Add in attributes
@@ -82,26 +82,17 @@ def createnetCDF(fieldfile):
     longitudes.units = 'degrees_east'
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
-    v.stash_item = 2
-    v.stash_model = 1
-    v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.long_name = 'V COMPONENT OF WIND AFTER TIMESTEP'
-    v.standard_name = 'northward_wind'
-    v.units = 'm s-1'
-    v.stash_section = 0
+    v.long_name = 'THETA'
+    v.standard_name = 'air_potential_temperature'
+    v.units = 'K'
     v.missing_value = -1.073742e+09
 
     # Add in values of lat, lon and height
     f2 = cdms2.open('/group_workspaces/jasmin/hiresgw/xjanp/'+fieldfile)
     var = f2.getVariables()
+    
+    v2 = var[9]
 
-    if len(var)==4:
-        v2 = var[3]
-    elif len(var)==11:
-        v2 = var[7]
-    else: raise ValueError('lenght check doesnt work')
-
-     # v cmpt of velocity
     z2 = f2.getVariables()[0]
     zvals = z2.domain[0][0][:]
     # Check the length of the latitude dimension
@@ -118,6 +109,10 @@ def createnetCDF(fieldfile):
         lonvals = np.linspace(360./(1024*2),360.-360./(1024*2),1024)
     else: raise ValueError('Unhandled longitude dimension')
     
+    print v2.name_in_file
+    print v2.shape
+    #print v2.
+
     latitudes[:] = latvals[:]
     longitudes[:] = lonvals[:]
     z_hybrid_heights[:] = zvals[:]
@@ -132,19 +127,14 @@ def field2nc(fieldfile):
     print '\nWrite started for ',fieldfile
     fielddir = '/group_workspaces/jasmin/hiresgw/xjanp/'
     f = cdms2.open(fielddir+fieldfile)
-    var = f.getVariables()   
-    if len(var)==4:
-        v = var[3]
-    elif len(var)==11:
-        v = var[7]
-    else: raise ValueError('length check doesnt work')
+    var = f.getVariables() 
+    v = var[9]
     print '\nVariables being saved', v.name_in_file
     
-    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.v.nc'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.theta.nc'
     f2 = Dataset(ncfile,'a')
-    appendv = f2.variables['v']
+    appendv = f2.variables['theta']
     appendtime = f2.variables['time']    
-    
     for t in xrange(0,240):
         print 't = ',t
         appendv[t:t+1,:,:,:] = v[t:t+1,:,:,:]
@@ -152,20 +142,20 @@ def field2nc(fieldfile):
 
     f.close()
     f2.close()
-    print 'Write done for t ',fieldfile
+    print 'Write done for t = ',fieldfile,'\n'
 
 def main():    
     # Get filename from shell argument
-    test = False
-    if test: 
-        fieldfiletemp2 = '/group_workspaces/jasmin/hiresgw/xjanp/xjanpa.pi19910301'
+    debug = False
+    if debug: 
+        fieldfiletemp2 = '/group_workspaces/jasmin/hiresgw/xjanp/xjanpa.pb19910301'
     else:
         fieldfiletemp = argv[1:]
         fieldfiletemp2 = fieldfiletemp[0]
     
     fieldfile = fieldfiletemp2[39:]
     print fieldfile
-    createnetCDF(fieldfile)    
+    createnetCDF(fieldfile)
     field2nc(fieldfile)
 
 if __name__ == '__main__':

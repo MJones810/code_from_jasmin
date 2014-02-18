@@ -33,11 +33,11 @@ def hourspassed(fieldfile,t):
 def createnetCDF(fieldfile):
     ''' Creates the netCDF file to then be opened in field2nc. 
     '''
-    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.v.nc'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.p.nc'
     f = Dataset(ncfile,'w')
 
     zres = 180
-    latres = 769
+    latres = 768
     lonres = 1024
     # Create dimensions
     time = f.createDimension('time',None)
@@ -57,7 +57,7 @@ def createnetCDF(fieldfile):
     longitudes = f.createVariable('longitude','f4',('longitude',),zlib=True)
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',),zlib=True)
-    v = f.createVariable('v','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable('p','f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
 
     # Add in attributes
@@ -82,25 +82,18 @@ def createnetCDF(fieldfile):
     longitudes.units = 'degrees_east'
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
-    v.stash_item = 2
-    v.stash_model = 1
-    v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.long_name = 'V COMPONENT OF WIND AFTER TIMESTEP'
-    v.standard_name = 'northward_wind'
-    v.units = 'm s-1'
-    v.stash_section = 0
+    v.lookup_source = 'defaults (cdunifpp V0.14pre1)'
+    v.standard_name = 'air_pressure'
+    v.long_name = 'AIR PRESSURE'
+    v.units = 'Pa'
     v.missing_value = -1.073742e+09
 
     # Add in values of lat, lon and height
     f2 = cdms2.open('/group_workspaces/jasmin/hiresgw/xjanp/'+fieldfile)
     var = f2.getVariables()
 
-    if len(var)==4:
-        v2 = var[3]
-    elif len(var)==11:
-        v2 = var[7]
-    else: raise ValueError('lenght check doesnt work')
-
+    v2 = var[3]
+   
      # v cmpt of velocity
     z2 = f2.getVariables()[0]
     zvals = z2.domain[0][0][:]
@@ -125,6 +118,7 @@ def createnetCDF(fieldfile):
 
     f.close()
 
+
 def field2nc(fieldfile):
     ''' Converts fileds file for variable at a specific time level to 
         an nc file.
@@ -133,16 +127,12 @@ def field2nc(fieldfile):
     fielddir = '/group_workspaces/jasmin/hiresgw/xjanp/'
     f = cdms2.open(fielddir+fieldfile)
     var = f.getVariables()   
-    if len(var)==4:
-        v = var[3]
-    elif len(var)==11:
-        v = var[7]
-    else: raise ValueError('length check doesnt work')
+    v = var[3]
     print '\nVariables being saved', v.name_in_file
     
-    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.v.nc'
+    ncfile = '/group_workspaces/jasmin/hiresgw/mj07/'+fieldfile+'.p.nc'
     f2 = Dataset(ncfile,'a')
-    appendv = f2.variables['v']
+    appendv = f2.variables['p']
     appendtime = f2.variables['time']    
     
     for t in xrange(0,240):
@@ -153,6 +143,7 @@ def field2nc(fieldfile):
     f.close()
     f2.close()
     print 'Write done for t ',fieldfile
+
 
 def main():    
     # Get filename from shell argument
