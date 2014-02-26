@@ -3,16 +3,36 @@ import numpy as np
 from glob import glob
 from netCDF4 import Dataset
 import jug
+activate_this = '/home/users/mjones07/science/venv/bin/activate_this.py'
+execfile(activate_this, dict(__file__=activate_this))
+import numexpr as ne
+
+def monthspassed(filename):
+    ''' Function to work out months passed since start of the model.
+
+    Asumes 360 day calendar.
+    '''    
+    startyear = 1991
+    startmonth = 03
+    year = int(filename[-14:-10])
+    month = int(filename[-10:-8])
+    yearspass = year-startyear     
+
+    if month>=03: monthspass = month-startmonth
+    elif month==01: 
+        monthspass = -2
+    elif month==02: 
+        monthspass = -1
+    
+    monthspass = yearspass*12+monthspass
+    return monthspass
 
 def create_nc(filein):
     ''' Creates the NetCDF file to save the final averages
         in.
     '''
-    print '\n\n create_nc\n'
-    print filein
     filedir = filein[:-22]+'monthly_means/'
     filename = filein[-22:-16]+'.monthlymean.u.nc'
-    print filedir+filename
     f = Dataset(filedir+filename,'w')
 
     # Create dimensions
@@ -34,7 +54,7 @@ def create_nc(filein):
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',))
     u = f.createVariable('u','f4',('time','z_hybrid_height','latitude',
-                                   'longitude',))
+                                   'longitude',),zlib=True)
     
     # Add in attributes
     times.units = 'months since 1991-03-01 00:00:00'
@@ -84,7 +104,7 @@ def create_temp_nc(filename):
     ''' Creates a temporary NetCDF file to store u between
         tasks.
     '''
-    # If long filename assume from 'average_files'
+    # If .nc on end of filename assume from 'average_files'
     if filename[-3:] == '.nc' :
         tempdir = filename[:-22]+'monthly_means/temp_files/'
         tempfile = filename[-22:-5]+'.temp.nc'
@@ -92,8 +112,7 @@ def create_temp_nc(filename):
     else : # Else from monthly average
         tempdir = filename[:-15]+'monthly_means/temp_files/'
         tempfile = filename[-15:]+'.temp.nc'
-    print filename
-    print tempdir+tempfile
+
     f = Dataset(tempdir+tempfile,'w')    
     
     # Create dimensions
@@ -104,24 +123,25 @@ def create_temp_nc(filename):
 
     # Create u variable
     u = f.createVariable('u','f4',('z_hybrid_height','latitude',
-                                   'longitude',))
+                                   'longitude',),zlib=True)
     f.close()
 
 def file_avg(mean,filename):
     ''' Averages the current netCDF file, 'filename', and returns 
         the result.
     '''
-    f = Dataset(filename,'r')
-    time = f.variables['time']
+    favg = Dataset(filename,'r')
+    time = favg.variables['time']
     timelength = len(time)
-    u = f.variables['u']
+    u = favg.variables['u']
+
+    mean = u[0,:,:,:]
     
-    #for t in xrange(1):
-    #    print t, mean.shape, mean[10,10,10]
-    #    mean = (mean+u[t,:,:,:])/2
+    for t in xrange(1,timelength):
+        
+        mean = (mean+u[t,:,:,:])/2
     
-    
-    f.close()
+    favg.close()
     return mean
 
 @jug.TaskGenerator
@@ -131,9 +151,36 @@ def final_average(n):
 
         Creates a file to save into.
     '''
-    filename = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910301.u.nc'
-    print '\n file sent  ', filename
+    # get list of monthly means
+    directory = '/group_workspaces/jasmin/hiresgw/mj07/'
+    months = glob(directory+'monthly_means/temp_files/xjanpa.pj??????.temp.nc')
+    months.sort()
+    # Example file to take lat, lon and height vals from
+    filename = directory+'xjanpa.pj19910301.u.nc'
+    # Create netCDF file to save data to
+    print '\nCreating final netcdf file using : ', filename
     create_nc(filename)
+    createdfile = directory+'monthly_means/xjanpa.monthlymean.u.nc'
+
+    ffin = Dataset(createdfile,'a')
+    u = ffin.variables['u']
+    t = ffin.variables['time']
+
+    for i,monthfile in enumerate(months) :
+        ffin2 = Dataset(monthfile,'r')
+        uappend = ffin2.variables['u']
+        u[i,:,:,:] = uappend[:]
+        # Work out months passed since start of model run
+        tappend = monthspassed(monthfile)
+        t[i] = tappend
+        ffin2.close()
+
+    ffin.close()
+
+    return 0
+        
+
+    
 
 @jug.TaskGenerator
 def average_to_month(filein):
@@ -141,11 +188,34 @@ def average_to_month(filein):
         
         Creates a new temporary file per month.
     '''
-    
+    directory = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/'
     month = filein[:-7]
-    print 'create month', month
+    print '\nCreating temp netcdf for month using : ', month
     create_temp_nc(month)
+    # Get the 3 files for each month
+    files = glob(directory+'temp_files/'+filein[-22:-7]+'??.temp.nc')
+    fmon = Dataset(files[0],'r')
+    u = fmon.variables['u']
+    mean = u[:]
+    fmon.close()
+    
+    for filename in files[1:]:
+        fmon2 = Dataset(filename,'r')
+        u = fmon2.variables['u']
+        mean = (mean+u[:])/2
+        fmon2.close()
 
+    # Save mean in file
+    filename = directory+'temp_files/'+filein[-22:-7]+'.temp.nc'
+    fmon3 = Dataset(filename,'a')
+    u = fmon3.variables['u']
+    u[:] = mean[:]
+    
+    fmon3.close()
+
+    return 0
+        
+ 
 @jug.TaskGenerator
 def average_files(filename):
     ''' Averages each file down to 6 timesteps per file.
@@ -165,16 +235,19 @@ def average_files(filename):
     tempdir = filename[:-22]+'monthly_means/temp_files/'
     tempfile = filename[-22:-5]+'.temp.nc'
     create_temp_nc(filename)
-    f = Dataset(tempdir+tempfile,'a')
-    u = f.variables['u']
+    f2 = Dataset(tempdir+tempfile,'a')
+    u = f2.variables['u']
+    'u.shape : ',u.shape,'\nSaving u'
     u[:] = mean[:]
-    f.close()
+    f2.close()
 
     return 0
 
 # Get lists of the files and months to average
-files = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.*')
+files = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj*')
+files.sort()
 months = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj??????01.u.nc')
+months.sort()
 
 # First reduce the number of timesteps on each file by
 # averaging them.
