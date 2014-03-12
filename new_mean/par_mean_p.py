@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-''' Calculate the monthly mean of u. '''
+''' Calculate the monthly mean of p. '''
 from glob import glob
 import jug
 import numpy as np
@@ -29,7 +29,7 @@ def create_nc(filein):
         in.
     '''
     filedir = filein[:-22]+'monthly_means/'
-    filename = filein[-22:-16]+'.monthlymean.u.nc'
+    filename = filein[-22:-16]+'.monthlymean.p.nc'
     f = Dataset(filedir+filename,'w')
 
     # Create dimensions
@@ -50,7 +50,7 @@ def create_nc(filein):
     longitudes = f.createVariable('longitude','f4',('longitude',))
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',))
-    v = f.createVariable('u','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable('p','f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
     
     # Add in attributes
@@ -75,13 +75,10 @@ def create_nc(filein):
     longitudes.units = 'degrees_east'
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
-    v.stash_item = 2
-    v.stash_model = 1
-    v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.standard_name = 'eastward_wind'
-    v.long_name = 'U COMPONENT OF WIND AFTER TIMESTEP'
-    v.units = 'm s-1'
-    v.stash_section = 0
+    v.lookup_source = 'defaults (cdunifpp V0.14pre1)'
+    v.standard_name = 'air_pressure'
+    v.long_name = 'AIR PRESSURE'
+    v.units = 'Pa'
     v.missing_value = -1.073742e+09
 
     # need to add in a bit that saves the values of time, lat and lon
@@ -100,18 +97,18 @@ def create_nc(filein):
     
 
 def create_temp_nc(filename):
-    ''' Creates a temporary NetCDF file to store u between
+    ''' Creates a temporary NetCDF file to store p between
         tasks.
     '''
     
     # If .nc on end of filename assume from 'filepsplit'
     if filename[-3:] == '.nc' :
         tempdir = filename[:-22]+'monthly_means/temp_files/'
-        tempfile = filename[-22:-5]+'.temp.u.nc'
+        tempfile = filename[-22:-5]+'.temp.p.nc'
     
     else : # Else from monthly average
         tempdir = filename[:-15]+'monthly_means/temp_files/'
-        tempfile = filename[-15:]+'.temp.u.nc'
+        tempfile = filename[-15:]+'.temp.p.nc'
     
 
     f = Dataset(tempdir+tempfile,'w')    
@@ -123,7 +120,7 @@ def create_temp_nc(filename):
     bound = f.createDimension('bound',2)
 
     # Create u variable
-    u = f.createVariable('u','f4',('z_hybrid_height','latitude',
+    u = f.createVariable('p','f4',('z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
     f.close()
 
@@ -134,12 +131,12 @@ def splitmonthcalc(fileblob,n):
     files = fileblob.split(',')
     del files[-1] # get rid off empty string at end
     f = Dataset(files[0],'r')
-    u = f.variables['u']
+    u = f.variables['p']
     mean = u[:,:,n:n+128]
     f.close()
     for filename in files[1:]:
         f = Dataset(filename,'r')
-        u = f.variables['u']
+        u = f.variables['p']
         utemp = u[:,:,n:n+128]
         mean = ne.evaluate('(mean+utemp)/2')
         f.close()
@@ -153,7 +150,7 @@ def splitfilecalc(filename,n):
     f = Dataset(filename,'r')
     time = f.variables['time']
     timelength = len(time)
-    u = f.variables['u']
+    u = f.variables['p']
 
     mean = u[0,:,:,n:n+128]
     
@@ -173,22 +170,22 @@ def finalreduce(debug=False):
     '''
     # get list of monthly means
     directory = '/group_workspaces/jasmin/hiresgw/mj07/'
-    months = glob(directory+'monthly_means/temp_files/xjanpa.pj??????.temp.u.nc')
+    months = glob(directory+'monthly_means/temp_files/xjanpa.pj??????.temp.p.nc')
     months.sort()
     # Example file to take lat, lon and height vals from
-    filename = directory+'xjanpa.pj19910301.u.nc'
+    filename = directory+'xjanpa.pj19910301.p.nc'
     # Create netCDF file to save data to
     print '\nCreating final netcdf file using : ', filename
     create_nc(filename)
-    createdfile = directory+'monthly_means/xjanpa.monthlymean.u.nc'
+    createdfile = directory+'monthly_means/xjanpa.monthlymean.p.nc'
 
     ffin = Dataset(createdfile,'a')
-    u = ffin.variables['u']
+    u = ffin.variables['p']
     t = ffin.variables['time']
 
     for i,monthfile in enumerate(months) :
         ffin2 = Dataset(monthfile,'r')
-        uappend = ffin2.variables['u']
+        uappend = ffin2.variables['p']
         u[i,:,:,:] = uappend[:]
         # Work out months passed since start of model run
         tappend = monthspassed(monthfile)
@@ -208,7 +205,7 @@ def monreduce(filein):
     month = filein[:-7]
     create_temp_nc(month)
     # Get the 3 files for each month
-    files = glob(directory+'temp_files/'+filein[-22:-7]+'??.temp.u.nc')
+    files = glob(directory+'temp_files/'+filein[-22:-7]+'??.temp.p.nc')
     fileblob = ''
     for filename in files:
         fileblob+=filename+','
@@ -222,9 +219,9 @@ def monreduce(filein):
                         meansection[6].get(),meansection[7].get()), 2)
     print 'done for %s' % (month)    
     # Save mean in file
-    filename = directory+'temp_files/'+filein[-22:-7]+'.temp.u.nc'
+    filename = directory+'temp_files/'+filein[-22:-7]+'.temp.p.nc'
     f = Dataset(filename,'a')
-    u = f.variables['u']
+    u = f.variables['p']
     u[:] = mean[:]
     
     f.close()
@@ -247,9 +244,9 @@ def filesplit(filename):
                         meansection[6].get(),meansection[7].get()), 2)
     print 'done for %s' % (filename)
     tempdir = filename[:-22]+'monthly_means/temp_files/'
-    tempfile = filename[-22:-5]+'.temp.u.nc'
+    tempfile = filename[-22:-5]+'.temp.p.nc'
     f = Dataset(tempdir+tempfile,'a')
-    u = f.variables['u']
+    u = f.variables['p']
     u[:] = mean[:]
     f.close()
 
@@ -267,7 +264,7 @@ if debug:
                  '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910421.u.nc']
         
 else: #glob bit
-    filenames = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj*')
+    filenames = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.ph*')
     filenames.sort()
         
 map(filesplit,filenames)
@@ -278,13 +275,10 @@ if debug:
                  '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910401.u.nc']
         
 else: #glob month bit
-    filenames = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj??????01.u.nc')
+    filenames = glob('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.ph??????01.p.nc')
     filenames.sort()
         
 map(monreduce,filenames)
 jug.barrier()
 map(finalreduce,[False])
 
-#map(mainmean,[True])
-#jug.barrier()
-#map(monmean,[True])

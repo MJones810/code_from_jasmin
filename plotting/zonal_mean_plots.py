@@ -6,27 +6,96 @@ from netCDF4 import Dataset
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import myplot
+from multiprocessing import Pool
+activate_this = '/home/users/mjones07/science/venv/bin/activate_this.py'
+execfile(activate_this,dict(__file__=activate_this))
+import numexpr as ne
 
-def timeheight():
-    u_zonalmean_at_2degS = u[:,:,lat_val,0]
+def zonalwindmag():
+    ''''''
+    lat60N = 640
+    lat60S = 128
+    zval = 102
+    # non zonal wind 
+    # 60N time series
+    
+    profile60N = u[:,zval,lat60N,:]
+    mean = profile60N[:,0]
+    for i in xrange(1,len(lon)):
+        mean = (mean+profile60N[:,i])/2
+    ax = plt.figure()
+    plt.subplot(2,1,1)
+    myplot.addInfo(ax,model='xjanpa N512L180')
+    plt.plot(t,mean)
+    plt.title('zonal mean windspeed at '+str(lat[lat60N])+'N, '+str(z[zval])+'m')
+    plt.ylabel('zonal wind speed (ms$^{-1}$)')
+    plt.xticks(range(0,25,6), ['03/1991', '09/1991', '03/1992', '09/1992', '03/1993'])
 
+    profile60S = u[:,zval,lat60S,:]
+    mean = profile60S[:,0]
+    for i in xrange(1,len(lon)):
+        mean = (mean+profile60S[:,i])/2
+    plt.subplot(2,1,2)
+    plt.plot(t,mean)
+    plt.title('zonal mean windspeed at '+str(lat[lat60S])+'N, '+str(z[zval])+'m')
+    plt.ylabel('zonal wind speed (ms$^{-1}$)')
+    plt.xticks(range(0,25,6), ['01/03/1991', '01/09/1991', '01/03/1992', '01/09/1992', '01/03/1993'])
+
+    plt.show()
+
+def timeheightQBO():
+    
     vmin = -100
     vmax = 100
-    levs = 24
+    levs = 6
     lat_val = 374
 
-    for i in xrange(1,len(u[0,0,0,:])):
+    u_at_2degS = u[:,:,lat_val,:]
+    print 'assignment done'
+    u_zonalmean_at_2degS = u_at_2degS[:,:,0]
+
+    for i in xrange(1,len(u_at_2degS[0,0,:])):
         
-        u_zonalmean_at_2degS = (u_zonalmean_at_2degS+u[:,:,lat_val,i])/2#
+        u_zonalmean_at_2degS = (u_zonalmean_at_2degS+u_at_2degS[:,:,i])/2
 
         if i%50 == 0: print 't-z -2deg : ',i
-    plt.figure()
-    plt.contourf(t,z,u_zonalmean_at_2degS.T,levs,vmin=vmin,vmax=vmax)
-    plt.colorbar(orientation='horizontal')
-    plt.contour(t,z,u_zonalmean_at_2degS.T,levels=[0],linewidth=2,colors='w')
+    ax = plt.figure()
+    CS = plt.contour(t,z[70:110],u_zonalmean_at_2degS[:,70:110].T,levs,colors='k')
+    plt.clabel(CS,fontsize=9,inline=True,inline_spacing=5,fmt='%d')
+    #plt.colorbar(orientation='horizontal')
+    #plt.contour(t,z,u_zonalmean_at_2degS.T,levels=[0],linewidth=2,colors='k')
     plt.xlabel('Months since start of model')
     plt.ylabel('Hybrid height (m)')
     plt.title('Time series of zonal mean at %d deg N' % lat[lat_val])
+    myplot.addInfo(ax)
+    plt.show()
+
+def timeheight():
+    
+    vmin = -100
+    vmax = 100
+    levs = 20
+    lat_val = 100
+
+    u_at_2degS = u[:,:,lat_val,:]
+    print 'assignment done'
+    u_zonalmean_at_2degS = u_at_2degS[:,:,0]
+
+    for i in xrange(1,len(u_at_2degS[0,0,:])):
+        
+        u_zonalmean_at_2degS = (u_zonalmean_at_2degS+u_at_2degS[:,:,i])/2
+
+        if i%50 == 0: print 't-z -2deg : ',i
+    ax = plt.figure()
+    CS = plt.contour(t,z,u_zonalmean_at_2degS.T,levs,colors='k')
+    plt.clabel(CS,fontsize=9,inline=True,inline_spacing=5,fmt='%d')
+    #plt.colorbar(orientation='horizontal')
+    #plt.contour(t,z,u_zonalmean_at_2degS.T,levels=[0],linewidth=2,colors='k')
+    plt.xlabel('Months since start of model')
+    plt.ylabel('Hybrid height (m)')
+    plt.title('Time series of zonal mean at %d deg N' % lat[lat_val])
+    myplot.addInfo(ax)
     plt.show()
 
 # height lat plots
@@ -34,7 +103,7 @@ def heightlat():
     april = 1
     july = 4
     octob = 7
-    jan = 9
+    jan = 10
 
     vmin = -140
     vmax = 140
@@ -59,11 +128,14 @@ def heightlat():
     plt.subplot(2,2,1)
     plt.contourf(lat,z,u_zonalmean_april,levs,vmin=vmin,vmax=vmax)
     plt.ylabel('hybrid height')
+    plt.xlabel('latitude')
     plt.title('April')
     plt.colorbar(orientation='horizontal')
     plt.contour(lat,z,u_zonalmean_april,levels=[0],linewidth=2,colors='w')
     plt.subplot(2,2,2)
     plt.contourf(lat,z,u_zonalmean_july,levs,vmin=vmin,vmax=vmax)
+    plt.ylabel('hybrid height')
+    plt.xlabel('latitude')
     plt.title('July')
     plt.colorbar(orientation='horizontal')
     plt.contour(lat,z,u_zonalmean_july,levels=[0],linewidth=2,colors='w')
@@ -76,6 +148,7 @@ def heightlat():
     plt.contour(lat,z,u_zonalmean_octob,levels=[0],linewidth=2,colors='w')
     plt.subplot(2,2,4)
     plt.contourf(lat,z,u_zonalmean_jan,levs,vmin=vmin,vmax=vmax)
+    plt.ylabel('hybrid height')
     plt.xlabel('latitude')
     plt.title('january')
     plt.colorbar(orientation='horizontal')
@@ -458,24 +531,27 @@ lon = f.variables['longitude']
 t = f.variables['time']
 z = f.variables['z_hybrid_height']
 
-file_april = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910411.u.nc'
+file_april = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910411.T.nc'
 f_april = Dataset(file_april,'r')
-u_april = f_april.variables['u']
+u_april = f_april.variables['T']
 t_april = f_april.variables['time']
 
-file_july = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19910611.u.nc'
+file_july = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910611.T.nc'
 f_july = Dataset(file_july,'r')
-u_july = f_july.variables['u']
+u_july = f_july.variables['T']
 t_july = f_july.variables['time']
 
-file_oct = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19911011.u.nc'
+file_oct = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19911011.T.nc'
 f_oct = Dataset(file_oct,'r')
-u_oct = f_oct.variables['u']
+u_oct = f_oct.variables['T']
 t_oct = f_oct.variables['time']
 
-file_jan = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19920111.u.nc'
+file_jan = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19920111.T.nc'
 f_jan = Dataset(file_jan,'r')
-u_jan = f_jan.variables['u']
+u_jan = f_jan.variables['T']
 t_jan = f_jan.variables['time']
 
-yzannualzonalmean()
+print 'file read finished'
+
+timeheight()
+#zonalwindmag()

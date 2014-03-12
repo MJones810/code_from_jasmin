@@ -57,6 +57,7 @@ def create_nc(filein):
                                    'longitude',),zlib=True)
     
     # Add in attributes
+    f.Conventions = 'CF-1.6'
     times.units = 'months since 1991-03-01 00:00:00'
     times.standard_name = 'time'
     times.calendar = '360_day'

@@ -18,12 +18,6 @@ def hourspassed(fieldfile,t):
 
     yearspass = year-startyear     
     monthspass = month-startmonth
-    #if month>=03: monthspass = month-startmonth
-    #elif month==01: 
-    #    monthspass = 10
-    #elif month==02: 
-    #    monthspass = 11
-    #else: raise ValueError('Month count does not work')
     dayspass = day-startday
     
     hourspass = ((yearspass*360+monthspass*30)+dayspass)*24 + t
@@ -61,6 +55,7 @@ def createnetCDF(fieldfile):
                                    'longitude',),zlib=True)
 
     # Add in attributes
+    f.Conventions = 'CF-1.6'
     times.units = 'hours since 1991-03-01 00:00:00'
     times.standard_name = 'time'
     times.calendar = '360_day'
