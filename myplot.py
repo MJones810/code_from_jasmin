@@ -10,8 +10,8 @@ import time
 def addInfo(figref,name=True,email=True,date=True,time_=False,filename=False,model=False):
     ''' Adds my name, the date and the filname produced
         
-        Defaults: name, email, data
-        options: time
+        Defaults: name, email, date
+        options: time, filename, model
     '''
     if name:
         figref.text(0.01,0.04,'Matthew Jones',fontsize=8)
@@ -23,8 +23,8 @@ def addInfo(figref,name=True,email=True,date=True,time_=False,filename=False,mod
     if time_:
         timestr = time.strftime("%H:%M:%S")
         figref.text(0.92,0.04,timestr,fontsize=8)
-    if filename:
-        filestr = os.path.basename(__file__)
+    if filename!=False:
+        filestr = filename
         figref.text(0.3,0.02,'figure produced with %s' % filestr,fontsize=7)
     if model!=False:
         figref.text(0.92,0.07,'model : \n%s' % model,fontsize=8)

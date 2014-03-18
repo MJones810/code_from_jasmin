@@ -1,0 +1,31 @@
+Sender: LSF System <lsfadmin@host022.jc.rl.ac.uk>
+Subject: Job 78432: </home/users/mjones07/science/xjlef_conv/u_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.ph19810901> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/u_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.ph19810901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host022.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjlef_conv> was used as the working directory.
+Started at Tue Mar 18 12:44:36 2014
+Results reported at Tue Mar 18 12:49:49 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/u_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.ph19810901
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: Alarm clock.
+
+Resource usage summary:
+
+    CPU time   :    277.00 sec.
+    Max Memory :      1064 MB
+    Max Swap   :     18156 MB
+
+    Max Processes  :         1
+    Max Threads    :         9
+
+The output (if any) follows:
+

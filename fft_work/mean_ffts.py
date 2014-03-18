@@ -102,7 +102,7 @@ def instfield(date,subplot,latrange):
         [scale/1,scale/2,scale/5,scale/10,scale/20,scale/50,scale/100,\
          scale/300,'2dx'])
     
-def monthfield(month,subplot,latrange,zrange,labelpad = 0):
+def monthfield(month,subplot,latrange,zrange,labelpad = 0,processes = 4):
     ''' takes only data from first year'''
     
     if month == 'jan': monthval=11
@@ -161,7 +161,7 @@ def monthfield(month,subplot,latrange,zrange,labelpad = 0):
     print 'Interp done'
     ##KE
     KE_strat = ne.evaluate('0.5*(u_strat**2+v_strat**2)')
-    processes = 4
+    
     splitind = range(0,lt2-lt1,(lt2-lt1)/processes)
     pool = Pool(processes=processes)
     TASKS = [(KE_strat,lon[:],(lt2-lt1)/processes,n) for n in splitind]
@@ -195,9 +195,9 @@ def monthfield(month,subplot,latrange,zrange,labelpad = 0):
     #    [scale/1,scale/2,scale/5,scale/10,scale/20,scale/50,scale/100,\
     #     scale/300,'2dx'])
 
-fig = plt.figure(frameon=False,figsize=(9,9))
-monthfield(month='jan', subplot=[3,1,1], latrange=[384,768], zrange='trop',labelpad=-15)
-monthfield(month='jan', subplot=[3,1,2], latrange=[384,768], zrange='strat',labelpad=-15)
-monthfield(month='jan', subplot=[3,1,3], latrange=[384,768], zrange='meso',labelpad=-15)
+fig = plt.figure(frameon=False,figsize=(4.5,9))
+monthfield(month='jan', subplot=[2,1,1], latrange=[256,384], zrange='strat',processes=2)
+monthfield(month='jan', subplot=[2,1,2], latrange=[128,256], zrange='strat',processes=2)
+
 myplot.addInfo(fig,filename='mean_ffts.py')
 plt.show()#savefig('meanfft_jul_tropstratmes.pdf')
