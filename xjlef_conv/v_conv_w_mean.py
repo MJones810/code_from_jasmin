@@ -206,7 +206,7 @@ def main():
     ''' Gets the pressure file from command line arg and works 
         everything out from there. Saves hourly and monthly data.
     '''
-    test = False
+    test = True
     if test: 
         infile = '/group_workspaces/jasmin/hiresgw/mj07/xjlefa.pi19810901'
     else:

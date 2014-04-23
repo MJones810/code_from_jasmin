@@ -12,8 +12,8 @@ def monthspassed(filename):
     '''    
     startyear = 1991
     startmonth = 3
-    year = int(filename[-11:-7])
-    month = int(filename[-7:-5])
+    year = int(filename[-15:-11])
+    month = int(filename[-11:-9])
     yearspass = year-startyear     
 
     if month>=03: monthspass = month-startmonth
@@ -51,7 +51,7 @@ def create_nc(var):
     longitudes = f.createVariable('longitude','f4',('longitude',))
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',))
-    v = f.createVariable('u','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable(var,'f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
     
     # Add in attributes
@@ -78,15 +78,14 @@ def create_nc(var):
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
     #**#
-    v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.standard_name = 'eastward_wind'
-    v.long_name = 'U COMPONENT OF WIND AFTER TIMESTEP'
-    v.units = 'm s-1'
+    v.long_name = 'THETA'
+    v.standard_name = 'air_potential_temperature'
+    v.units = 'K'
     v.missing_value = -1.073742e+09
     #**#
 
     # need to add in a bit that saves the values of time, lat and lon
-    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910301.u.nc') #**#
+    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910301.'+var+'.nc') #**#
     
     lat = f2.variables['latitude']
     lon = f2.variables['longitude']
@@ -100,7 +99,7 @@ def create_nc(var):
     f2.close()
 
 def main():
-    var = 'u'
+    var = 'theta'
     path = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/temp_files/'
     files = glob(path+'xjanpa.??????.'+var+'.nc')
     files.sort()

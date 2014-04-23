@@ -36,7 +36,7 @@ def create_nc(var):
     # Create dimensions
     time = f.createDimension('time',None)
     z_hybrid_height = f.createDimension('z_hybrid_height',180)
-    latitude = f.createDimension('latitude',768)#**#
+    latitude = f.createDimension('latitude',769)#**#
     longitude = f.createDimension('longitude',1024)
     bound = f.createDimension('bound',2)
 
@@ -51,7 +51,7 @@ def create_nc(var):
     longitudes = f.createVariable('longitude','f4',('longitude',))
     bounds_longitude = f.createVariable('bounds_longitude','f8',
                                         ('longitude','bound',))
-    v = f.createVariable('u','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable(var,'f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True)
     
     # Add in attributes
@@ -79,14 +79,14 @@ def create_nc(var):
     longitudes.topology = 'circular'
     #**#
     v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.standard_name = 'eastward_wind'
-    v.long_name = 'U COMPONENT OF WIND AFTER TIMESTEP'
+    v.long_name = 'V COMPONENT OF WIND AFTER TIMESTEP'
+    v.standard_name = 'northward_wind'
     v.units = 'm s-1'
     v.missing_value = -1.073742e+09
     #**#
 
     # need to add in a bit that saves the values of time, lat and lon
-    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910301.u.nc') #**#
+    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910301.v.nc') #**#
     
     lat = f2.variables['latitude']
     lon = f2.variables['longitude']
@@ -100,7 +100,7 @@ def create_nc(var):
     f2.close()
 
 def main():
-    var = 'u'
+    var = 'v'
     path = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/temp_files/'
     files = glob(path+'xjanpa.??????.'+var+'.nc')
     files.sort()

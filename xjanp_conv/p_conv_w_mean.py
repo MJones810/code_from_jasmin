@@ -15,9 +15,12 @@ def hourspassed(fieldfile,t):
     ''' Function to work out hours passed since 1991-03-01 00:00:00.
 
     Asumes 360 day calendar.
+
+    Needs changing depending on the model run - they have different 
+    start dates.
     '''
-    startyear = 1981
-    startmonth = 9
+    startyear = 1991
+    startmonth = 3
     startday = 1
     year = int(fieldfile[-8:-4])
     month = int(fieldfile[-4:-2])
@@ -37,14 +40,14 @@ def createfile_mean(filename):
     f = Dataset(filename,'w')
 
     zres = 180
-    latres = 768 ### 325 for v, 324 for u
-    lonres = 1024
+    latres = 768 ### 769 for v, 768 for u
+    lonres = 1024 #**#
     # Create dimensions
     z_hybrid_height = f.createDimension('z_hybrid_height',zres)
     latitude = f.createDimension('latitude',latres)
     longitude = f.createDimension('longitude',lonres)
 
-    v = f.createVariable('u','f4',('z_hybrid_height','latitude',
+    v = f.createVariable('p','f4',('z_hybrid_height','latitude',
                                    'longitude',),zlib=True) #**#
     f.close()
 
@@ -58,7 +61,7 @@ def createfile(filename):
     f = Dataset(filename,'w')
 
     zres = 180 #**#
-    latres = 768#**#
+    latres = 768 #**#
     lonres = 1024 #**#
     # Create dimensions
     time = f.createDimension('time',None)
@@ -73,7 +76,7 @@ def createfile(filename):
                                         ('z_hybrid_height',),zlib=True)
     latitudes = f.createVariable('latitude','f4',('latitude',),zlib=True)
     longitudes = f.createVariable('longitude','f4',('longitude',),zlib=True)
-    v = f.createVariable('u','f4',('time','z_hybrid_height','latitude',
+    v = f.createVariable('p','f4',('time','z_hybrid_height','latitude',
                                    'longitude',),zlib=True) #**#
 
     # Add in attributes
@@ -100,19 +103,20 @@ def createfile(filename):
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
     #**#
-    v.lookup_source = 'defaults (cdunifpp V0.13)'
-    v.standard_name = 'eastward_wind'
-    v.long_name = 'U COMPONENT OF WIND AFTER TIMESTEP'
-    v.units = 'm s-1'
+    v.lookup_source = 'defaults (cdunifpp V0.14pre1)'
+    v.standard_name = 'air_pressure'
+    v.long_name = 'AIR PRESSURE'
+    v.units = 'Pa'
     v.missing_value = -1.073742e+09
     #**#
 
     # Add in values of lat, lon and height
-    fieldfile = 'xjanpa.pj'+filename[-13:-5] #**#
+    fieldfile = 'xjanpa.ph'+filename[-13:-5] #**# #range changes depending on length of field name
+    print 'fieldfile : ', fieldfile
     f2 = cdms2.open('/group_workspaces/jasmin/hiresgw/xjanp/'+fieldfile)#**#
-    var = f2.getVariables()    
-    v2 = var[9]#**#
-
+    var = f2.getVariables()
+    v2 = var[3] #**#
+    
     z2 = f2.getVariables()[0]
     zvals = z2.domain[0][0][:]
     # Check the length of the latitude dimension
@@ -147,7 +151,7 @@ def var_save(dates):
     # compile list of the 3 files for that month
     v_files = []
     for date in dates: 
-        v_files.append('/group_workspaces/jasmin/hiresgw/xjanp/xjanpa.pj'\
+        v_files.append('/group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph'\
                         +date) #**#
         
     ismean = False # checker to see if there is already a mean
@@ -157,22 +161,23 @@ def var_save(dates):
         # Read in the fields file
         f = cdms2.open(v_files[i])
         var = f.getVariables() 
-        v = var[9] #**# # (the same variable may not be in the same 
+        v = var[3]
+                   #**# # (the same variable may not be in the same 
                         #  place in each of the fields files)
 
         f = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.'\
-                    +date+'.u.nc','a') #**#                          
+                    +date+'.p.nc','a') #**#                          
         appendtime = f.variables['time']
-        appendT = f.variables['u'] #**#
+        appendT = f.variables['p'] #**#
     
         print 'Entering time loop for %s ' % date
         for t in xrange(240):
             v_slice = v[t,:,:,:]
             
             f = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.'\
-                        +date+'.u.nc','a') #**#                              
+                        +date+'.p.nc','a') #**#                              
             appendtime = f.variables['time']
-            appendv = f.variables['u'] #**#
+            appendv = f.variables['p'] #**#
 
             # check if there is already a mean
             print 'Calculating mean'
@@ -189,9 +194,9 @@ def var_save(dates):
             print 'Saving mean'
             meanfile = '/group_workspaces/jasmin/hiresgw/mj07/'+\
                 'monthly_means/temp_files/xjanpa.'+str(date[:-2])+\
-                '.u.nc' #**#                            
+                '.p.nc' #**#                            
             fmean = Dataset(meanfile,'a')
-            appendv_mean = fmean.variables['u']#**#
+            appendv_mean = fmean.variables['p']#**#
             appendv_mean[:] = mean[:]
 
 def main():
@@ -200,7 +205,7 @@ def main():
     '''
     test = False
     if test: 
-        infile = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pj19810901'
+        infile = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.ph19920801'
     else:
         infiletemp = argv[1:]
         infile = infiletemp[0]
@@ -209,9 +214,9 @@ def main():
     print 'dates being done\n',dates    
     path = '/group_workspaces/jasmin/hiresgw/mj07/'
     for date in dates:
-        createfile(path+'xjanpa.'+date+'.u.nc')#**#
+        createfile(path+'xjanpa.'+date+'.p.nc')#**#
     path_mean = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/temp_files/'
-    createfile_mean(path_mean+'xjanpa.'+str(infile[-8:-2])+'.u.nc')#**#
+    createfile_mean(path_mean+'xjanpa.'+str(infile[-8:-2])+'.p.nc')#**#
     # send off calcs
     var_save(dates)
         

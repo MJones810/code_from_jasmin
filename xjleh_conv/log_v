@@ -1,58 +1,27 @@
-Sender: LSF System <lsfadmin@host022.jc.rl.ac.uk>
-Subject: Job 88865: </home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901> Exited
+Sender: LSF System <lsfadmin@host044.jc.rl.ac.uk>
+Subject: Job 91332: </home/users/mjones07/science/xjleh_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810901> Done
 
-Job </home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
-Job was executed on host(s) <host022.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+Job </home/users/mjones07/science/xjleh_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host044.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
 </home/users/mjones07> was used as the home directory.
-</home/users/mjones07/science/xjlef_conv> was used as the working directory.
-Started at Thu Mar 20 12:39:51 2014
-Results reported at Thu Mar 20 13:20:33 2014
+</home/users/mjones07/science/xjleh_conv> was used as the working directory.
+Started at Sun Mar 23 15:58:32 2014
+Results reported at Sun Mar 23 18:12:26 2014
 
 Your job looked like:
 
 ------------------------------------------------------------
 # LSBATCH: User input
-/home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901
-------------------------------------------------------------
-
-TERM_OWNER: job killed by owner.
-Exited with signal termination: Alarm clock.
-
-Resource usage summary:
-
-    CPU time   :   1694.00 sec.
-    Max Memory :      1229 MB
-    Max Swap   :     18364 MB
-
-    Max Processes  :         1
-    Max Threads    :         9
-
-The output (if any) follows:
-
-Sender: LSF System <lsfadmin@host023.jc.rl.ac.uk>
-Subject: Job 88866: </home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901> Done
-
-Job </home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
-Job was executed on host(s) <host023.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
-</home/users/mjones07> was used as the home directory.
-</home/users/mjones07/science/xjlef_conv> was used as the working directory.
-Started at Thu Mar 20 13:14:04 2014
-Results reported at Thu Mar 20 15:20:51 2014
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-/home/users/mjones07/science/xjlef_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901
+/home/users/mjones07/science/xjleh_conv/v_calc_run.sh /group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810901
 ------------------------------------------------------------
 
 Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :   6056.00 sec.
-    Max Memory :      1259 MB
-    Max Swap   :     18443 MB
+    CPU time   :   9577.00 sec.
+    Max Memory :      1302 MB
+    Max Swap   :     18442 MB
 
     Max Processes  :         1
     Max Threads    :         9
@@ -61,13 +30,13 @@ The output (if any) follows:
 
 dates being done
 ['19810901', '19810911', '19810921']
-/group_workspaces/jasmin/hiresgw/mj07/xjlefa.19810901.v.nc
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901 is a byte-swapped 64-bit UM-file
-/group_workspaces/jasmin/hiresgw/mj07/xjlefa.19810911.v.nc
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810911 is a byte-swapped 64-bit UM-file
-/group_workspaces/jasmin/hiresgw/mj07/xjlefa.19810921.v.nc
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810921 is a byte-swapped 64-bit UM-file
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810901 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/mj07/xjleha.19810901.v.nc
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810901 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/mj07/xjleha.19810911.v.nc
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810911 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/mj07/xjleha.19810921.v.nc
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810921 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810901 is a byte-swapped 64-bit UM-file
 Entering time loop for 19810901 
 Calculating mean
 Saving variable
@@ -549,7 +518,7 @@ Calculating mean
 Saving variable
 Calculating mean
 Saving variable
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810911 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810911 is a byte-swapped 64-bit UM-file
 Entering time loop for 19810911 
 Calculating mean
 Saving variable
@@ -1031,7 +1000,7 @@ Calculating mean
 Saving variable
 Calculating mean
 Saving variable
-/group_workspaces/jasmin/hiresgw/xjlef/xjlefa.pi19810921 is a byte-swapped 64-bit UM-file
+/group_workspaces/jasmin/hiresgw/xjleh/xjleha.pi19810921 is a byte-swapped 64-bit UM-file
 Entering time loop for 19810921 
 Calculating mean
 Saving variable

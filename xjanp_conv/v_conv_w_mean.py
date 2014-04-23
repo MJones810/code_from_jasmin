@@ -177,7 +177,7 @@ def var_save(dates):
         appendT = f.variables['v'] #**#
     
         print 'Entering time loop for %s ' % date
-        for t in xrange(2):
+        for t in xrange(240):
             v_slice = v[t,:,:,:]
             
             f = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.'\
@@ -209,9 +209,9 @@ def main():
     ''' Gets the pressure file from command line arg and works 
         everything out from there. Saves hourly and monthly data.
     '''
-    test = True
+    test = False
     if test: 
-        infile = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pi19910301'
+        infile = '/group_workspaces/jasmin/hiresgw/mj07/xjanpa.pi19920801'
     else:
         infiletemp = argv[1:]
         infile = infiletemp[0]

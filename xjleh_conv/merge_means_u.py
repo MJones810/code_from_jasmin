@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-''' merges the mean files together fot u and saves them into a single
+''' merges the mean files together fot T and saves them into a single
 '''
 
 from netCDF4 import Dataset
@@ -10,8 +10,8 @@ def monthspassed(filename):
 
     Asumes 360 day calendar.
     '''    
-    startyear = 1991
-    startmonth = 3
+    startyear = 1981
+    startmonth = 9
     year = int(filename[-11:-7])
     month = int(filename[-7:-5])
     yearspass = year-startyear     
@@ -30,14 +30,14 @@ def create_nc(var):
         in.
     '''
     filedir = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/'
-    filename = 'xjanpa.monthlymean.'+var+'.nc' #**#
+    filename = 'xjleha.monthlymean.'+var+'.nc'
     f = Dataset(filedir+filename,'w')
 
     # Create dimensions
     time = f.createDimension('time',None)
     z_hybrid_height = f.createDimension('z_hybrid_height',180)
-    latitude = f.createDimension('latitude',768)#**#
-    longitude = f.createDimension('longitude',1024)
+    latitude = f.createDimension('latitude',324)#**#
+    longitude = f.createDimension('longitude',432)
     bound = f.createDimension('bound',2)
 
     # Create variables (added s on the end to differentiate between dimensions
@@ -56,7 +56,7 @@ def create_nc(var):
     
     # Add in attributes
     f.Conventions = 'CF-1.6'
-    times.units = 'months since 1991-03-01 00:00:00'
+    times.units = 'months since 1981-09-01 00:00:00'
     times.standard_name = 'time'
     times.calendar = '360_day'
     times.axis = 'T'
@@ -77,16 +77,14 @@ def create_nc(var):
     longitudes.units = 'degrees_east'
     longitudes.axis = 'X'
     longitudes.topology = 'circular'
-    #**#
     v.lookup_source = 'defaults (cdunifpp V0.13)'
     v.standard_name = 'eastward_wind'
     v.long_name = 'U COMPONENT OF WIND AFTER TIMESTEP'
     v.units = 'm s-1'
     v.missing_value = -1.073742e+09
-    #**#
 
     # need to add in a bit that saves the values of time, lat and lon
-    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjanpa.19910301.u.nc') #**#
+    f2 = Dataset('/group_workspaces/jasmin/hiresgw/mj07/xjleha.19810901.u.nc')
     
     lat = f2.variables['latitude']
     lon = f2.variables['longitude']
@@ -102,11 +100,11 @@ def create_nc(var):
 def main():
     var = 'u'
     path = '/group_workspaces/jasmin/hiresgw/mj07/monthly_means/temp_files/'
-    files = glob(path+'xjanpa.??????.'+var+'.nc')
+    files = glob(path+'xjleha.??????.'+var+'.nc')
     files.sort()
 
     create_nc(var) 
-    fmon = Dataset('/group_workspaces/jasmin/hiresgw/mj07/monthly_means/xjanpa.monthlymean.'+var+'.nc','a')
+    fmon = Dataset('/group_workspaces/jasmin/hiresgw/mj07/monthly_means/xjleha.monthlymean.'+var+'.nc','a')
     vappend = fmon.variables[var]
     tappend = fmon.variables['time']
     for i,file in enumerate(files):

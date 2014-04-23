@@ -1,0 +1,48 @@
+Readme from 22/04/14
+
+T_calc - contains the code to run the calculation of T from the netCDF 
+         files containg theta and p
+       - to run the calculation run T_calc_bsub.sh (ie $ . T_calc_bsub)
+           -- output: - a netcdf file containing T for each of the 
+                        original netcdf files for theta, p
+                      - a file for the mean for each month  
+       - then when this is finished run merge_means_T.py to merge all 
+         the means for each month into a single netcdf file for the 
+         monthly mean
+
+fft_work - contains the work to do with the fft of the KE
+         - the main file is fft_timemean.py, this code has the ability 
+           to run for any model, any region in the atmosphere averging 
+           the calcualted ffts over the region specified and over the 
+           10 day netcdf file provided. Also has the ability to put a 
+           on the graphs showing the mean over the whole month and a
+           range of values using each of the 10 days to calculate the 
+           mean.
+                -- needs to be on lotus run using 
+                   $ . bsub_fft_timemean.sh
+                -- saves the output rather than displaying
+         - the next useful file (compare_xjanp_xjlef_xjleh.py) is 
+           slightly less useful and works off monthly mean netcdf files,
+           but does simlar thing, but no range only single lines
+
+xjanp_conv - contains the code the extract the variables from the xjanp 
+             ff files, currently contains u, v, p and theta. Produces
+             a netcdf file for every original ff file and outputs the
+             mean for each month. Outputs a log for the run.
+           - to run for example u, $ . u_calc_bsub.sh, then when 
+             finished run merge_means_u.py
+           - unit change is just a short  code to change the units on a 
+             netcdf file
+
+xjlef_conv - same as for xjanp_conv but for xjlef and only for u and v 
+
+xjleh_conv - same as for xjanp_conv but for xjleh and only for u and v 
+
+oldCode_probs_useless - contains old code that isn't used any more but 
+                        could be useful for reference
+
+plotting - contains code for plotting the data from the models
+         - tempWind_plots.py contains code to plot u contours on top
+           of temperature contours
+         - zonal_mean_plots.py contains lots of code for different kinds
+           of plots (bit of a mess, but useful)

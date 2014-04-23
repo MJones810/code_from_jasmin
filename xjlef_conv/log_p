@@ -1,0 +1,704 @@
+Sender: LSF System <lsfadmin@host027.jc.rl.ac.uk>
+Subject: Job 88999: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910401> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910401> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host027.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:11 2014
+Results reported at Thu Mar 20 21:43:11 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910401
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host024.jc.rl.ac.uk>
+Subject: Job 88998: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910301> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910301> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host024.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:11 2014
+Results reported at Thu Mar 20 21:43:11 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910301
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host021.jc.rl.ac.uk>
+Subject: Job 89000: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910501> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910501> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host021.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:11 2014
+Results reported at Thu Mar 20 21:43:11 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910501
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.02 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host019.jc.rl.ac.uk>
+Subject: Job 89001: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910601> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910601> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host019.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:11 2014
+Results reported at Thu Mar 20 21:43:14 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910601
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.02 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host042.jc.rl.ac.uk>
+Subject: Job 89012: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920501> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920501> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host042.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:16 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920501
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host041.jc.rl.ac.uk>
+Subject: Job 89011: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920401> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920401> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host041.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:16 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920401
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host043.jc.rl.ac.uk>
+Subject: Job 89014: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920701> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920701> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host043.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:16 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920701
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host026.jc.rl.ac.uk>
+Subject: Job 89006: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911101> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911101> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host026.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:17 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911101
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host023.jc.rl.ac.uk>
+Subject: Job 89003: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910801> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910801> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host023.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:17 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910801
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host025.jc.rl.ac.uk>
+Subject: Job 89008: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920101> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920101> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host025.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:17 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920101
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host018.jc.rl.ac.uk>
+Subject: Job 89007: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911201> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911201> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host018.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:17 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19911201
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host028.jc.rl.ac.uk>
+Subject: Job 89009: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920201> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920201> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host028.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:43:17 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920201
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.02 sec.
+    Max Memory :         2 MB
+    Max Swap   :        33 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host024.jc.rl.ac.uk>
+Subject: Job 89015: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920801> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920801> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host024.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:31 2014
+Results reported at Thu Mar 20 21:43:31 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920801
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host019.jc.rl.ac.uk>
+Subject: Job 89016: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920901> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host019.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:31 2014
+Results reported at Thu Mar 20 21:43:31 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920901
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host027.jc.rl.ac.uk>
+Subject: Job 89018: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921101> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921101> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host027.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:31 2014
+Results reported at Thu Mar 20 21:43:31 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921101
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host021.jc.rl.ac.uk>
+Subject: Job 89017: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921001> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921001> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host021.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:31 2014
+Results reported at Thu Mar 20 21:43:31 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921001
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host023.jc.rl.ac.uk>
+Subject: Job 89021: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930201> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930201> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host023.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:36 2014
+Results reported at Thu Mar 20 21:43:36 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930201
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host026.jc.rl.ac.uk>
+Subject: Job 89020: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930101> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930101> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host026.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:36 2014
+Results reported at Thu Mar 20 21:43:36 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19930101
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host022.jc.rl.ac.uk>
+Subject: Job 89002: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910701> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910701> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host022.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:11 2014
+Results reported at Thu Mar 20 21:43:49 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910701
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        33 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host022.jc.rl.ac.uk>
+Subject: Job 89019: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921201> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921201> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host022.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:37 2014
+Results reported at Thu Mar 20 21:43:51 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19921201
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        33 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host040.jc.rl.ac.uk>
+Subject: Job 89010: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920301> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920301> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host040.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:44:31 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19920301
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.03 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
+Sender: LSF System <lsfadmin@host045.jc.rl.ac.uk>
+Subject: Job 89004: </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910901> Exited
+
+Job </home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910901> was submitted from host <lotus.jc.rl.ac.uk> by user <mjones07> in cluster <lotus>.
+Job was executed on host(s) <host045.jc.rl.ac.uk>, in queue <lotus>, as user <mjones07> in cluster <lotus>.
+</home/users/mjones07> was used as the home directory.
+</home/users/mjones07/science/xjanp_conv> was used as the working directory.
+Started at Thu Mar 20 21:43:16 2014
+Results reported at Thu Mar 20 21:45:37 2014
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/home/users/mjones07/science/xjlef_conv/p_calc_run.sh /group_workspaces/jasmin/hiresgw/xjanp/xjanpa.ph19910901
+------------------------------------------------------------
+
+Exited with exit code 126.
+
+Resource usage summary:
+
+    CPU time   :      0.01 sec.
+    Max Memory :         2 MB
+    Max Swap   :        29 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) follows:
+
+/apps/lsf8/conf/jobstarter.sh: line 8: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: No such file or directory
+/apps/lsf8/conf/jobstarter.sh: line 8: exec: /home/users/mjones07/science/xjlef_conv/p_calc_run.sh: cannot execute: No such file or directory
