@@ -1,5 +1,11 @@
 Readme from 30/04/14
 
+Backup for code from my work on jasmin. Most of this is work in progress and may very well be wrong.
+
+Short descriptions of the main files and folders are below, all other folders and files probably aren't much use.
+
+myplot.py - contains code which allows me to add information to plots just by calling it.
+
 fft_work  - contains the work to do with the fft of the KE
 |         - the main file is fft_timemean.py, this code has the ability 
 |           to run for any model, any region in the atmosphere averging 
