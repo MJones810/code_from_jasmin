@@ -243,15 +243,21 @@ def starter():
     '''
     fig = plt.figure(figsize=(9,9))
 
-    infostrings = ['xjanp,19920901,trop,NHextrop,b',\
-                       'xjanp,19920911,trop,NHextrop,b',\
-                       'xjanp,19920921,trop,NHextrop,b']
-    plotwrap(infostrings,legendlab='xjanp oct tropos extropics',mon_mean=True,\
+    infostrings = ['xjanp,19920901,strat,NHextrop,b',\
+                   'xjanp,19920911,strat,NHextrop,b',\
+                   'xjanp,19920921,strat,NHextrop,b']
+    plotwrap(infostrings,legendlab='xjanp 1992 oct stratos extropics',mon_mean=True,\
             hexcolor='#b2b2ff',linecolor='b')
+
+    infostrings = ['xjanp,19910901,strat,NHextrop,b',\
+                   'xjanp,19910911,strat,NHextrop,b',\
+                   'xjanp,19910921,strat,NHextrop,b']
+    plotwrap(infostrings,legendlab='xjanp 1991 oct stratos extropics',mon_mean=True,\
+            hexcolor='#99cc99',linecolor='g')
     
     plt.legend(loc=3)
     myplot.addInfo(fig,filename='fft_timemean.py')
-    plt.savefig('newtest.pdf')
+    plt.savefig('newteststrat.pdf')
 start = time()
 starter()
 print 'time taken : %f' % (time()-start)

@@ -92,9 +92,42 @@ def timeheight():
     plt.clabel(CS,fontsize=9,inline=True,inline_spacing=5,fmt='%d')
     #plt.colorbar(orientation='horizontal')
     #plt.contour(t,z,u_zonalmean_at_2degS.T,levels=[0],linewidth=2,colors='k')
-    plt.xlabel('Months since start of model')
+    plt.xlabel('Month')
     plt.ylabel('Hybrid height (m)')
     plt.title('Time series of zonal mean at %d deg N' % lat[lat_val])
+    plt.xticks([1,4,7,10,13,16,19,23],['April 91','July 91','Oct 91',\
+                                       'Jan 92','April 92','July 92',\
+                                       'Oct 92','Jan 93'])
+    myplot.addInfo(ax)
+    plt.show()
+
+def timeheight65N():
+    
+    vmin = -100
+    vmax = 100
+    levs = 20
+    lat_val = 661
+
+    u_at_2degS = u[:,:,lat_val,:]
+    print 'assignment done'
+    u_zonalmean_at_2degS = u_at_2degS[:,:,0]
+
+    for i in xrange(1,len(u_at_2degS[0,0,:])):
+        
+        u_zonalmean_at_2degS = (u_zonalmean_at_2degS+u_at_2degS[:,:,i])/2
+
+        if i%50 == 0: print 't-z -2deg : ',i
+    ax = plt.figure()
+    CS = plt.contour(t,z,u_zonalmean_at_2degS.T,levs,colors='k')
+    plt.clabel(CS,fontsize=9,inline=True,inline_spacing=5,fmt='%d')
+    #plt.colorbar(orientation='horizontal')
+    #plt.contour(t,z,u_zonalmean_at_2degS.T,levels=[0],linewidth=2,colors='k')
+    plt.xlabel('Month')
+    plt.ylabel('Hybrid height (m)')
+    plt.title('Time series of zonal mean at %d deg N' % lat[lat_val])
+    plt.xticks([1,4,7,10,13,16,19,23],['April 91','July 91','Oct 91',\
+                                       'Jan 92','April 92','July 92',\
+                                       'Oct 92','Jan 93'])
     myplot.addInfo(ax)
     plt.show()
 
@@ -553,5 +586,5 @@ t_jan = f_jan.variables['time']
 
 print 'file read finished'
 
-timeheight()
+timeheight65N()
 #zonalwindmag()
